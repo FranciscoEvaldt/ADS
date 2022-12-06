@@ -17,22 +17,22 @@ public class AlunosController {
     @Autowired
     AlunosRepository alunosRepository;
     //Recuperar todas as notas
-    @GetMapping("/notes")
+    @GetMapping("/alunos")
     public List<com.example.Alunos.model.Alunos> getAllNotes(){
         return alunosRepository.findAll();
     }
-    @GetMapping("/notes/{id}")
+    @GetMapping("/alunos/{id}")
     public Optional<com.example.Alunos.model.Alunos> getById(@PathVariable(value = "id") Long id){
         return alunosRepository.findById(id);
     }
 
-    @DeleteMapping("/notes/{id}")
+    @DeleteMapping("/alunos/{id}")
     public ResponseEntity<?> deleteNote(@PathVariable(value = "id") Long id){
         Optional <com.example.Alunos.model.Alunos> note = alunosRepository.findById(id);
         alunosRepository.delete(note.get());
         return ResponseEntity.ok().build();
     }
-    @PutMapping("/notes/{id}")
+    @PutMapping("/alunos/{id}")
     public com.example.Alunos.model.Alunos updateNote(@PathVariable(value = "id") Long id,
                                                       @Valid @RequestBody com.example.Alunos.model.Alunos alunosDetails){
         Optional<com.example.Alunos.model.Alunos> note = alunosRepository.findById(id);
@@ -40,7 +40,7 @@ public class AlunosController {
         note.get().setContent(alunosDetails.getContent());
         return alunosRepository.save(note.get());
     }
-    @PostMapping("/notes")
+    @PostMapping("/alunos")
     public com.example.Alunos.model.Alunos createNote(@Valid @RequestBody com.example.Alunos.model.Alunos alunos){
         return alunosRepository.save(alunos);
     }
