@@ -17,7 +17,6 @@ import java.util.Date;
 public class Alunos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
 
     @NotBlank
     private String Id;
