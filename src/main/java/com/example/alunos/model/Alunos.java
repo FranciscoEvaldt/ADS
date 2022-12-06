@@ -20,9 +20,11 @@ public class Alunos {
     private long id;
 
     @NotBlank
-    private String title;
+    private String Id;
     @NotBlank
-    private String content;
+    private String Name;
+    @NotBlank
+    private String Turma;
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
@@ -33,28 +35,25 @@ public class Alunos {
     @LastModifiedDate
     private Date updateAT;
 
-    public long getId() {
-        return id;
+    public String getId() {
+        return Id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId(String Id) {this.Id = Id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {return Name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
-    public String getContent() {
-        return content;
+    public String getTurma() {return Turma;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setTurma(String Turma) {
+        this.Turma = Turma;
     }
 
     public Date getCreatedAT() {

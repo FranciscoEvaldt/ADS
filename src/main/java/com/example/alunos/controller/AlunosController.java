@@ -18,7 +18,7 @@ public class AlunosController {
     AlunosRepository alunosRepository;
     //Recuperar todas as notas
     @GetMapping("/alunos")
-    public List<com.example.Alunos.model.Alunos> getAllNotes(){
+    public List<com.example.Alunos.model.Alunos> getAllAlunos(){
         return alunosRepository.findAll();
     }
     @GetMapping("/alunos/{id}")
@@ -36,8 +36,9 @@ public class AlunosController {
     public com.example.Alunos.model.Alunos updateNote(@PathVariable(value = "id") Long id,
                                                       @Valid @RequestBody com.example.Alunos.model.Alunos alunosDetails){
         Optional<com.example.Alunos.model.Alunos> note = alunosRepository.findById(id);
-        note.get().setTitle(alunosDetails.getTitle());
-        note.get().setContent(alunosDetails.getContent());
+        note.get().setId(alunosDetails.getId());
+        note.get().setName(alunosDetails.getName());
+        note.get().setTurma(alunosDetails.getTurma());
         return alunosRepository.save(note.get());
     }
     @PostMapping("/alunos")
